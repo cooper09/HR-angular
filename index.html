@@ -152,6 +152,89 @@
 			</div>
 		</div><!-- end quote wrapper -->
 </div>
+<!-- add carousel -->
+<div id="work-view" class="">
+		<div class="horizontal-container">
+			<div class="project-details ">
+				<div class="panel">
+					<h4 ng-model="title">{{title}}</h4>
+					<hr>
+					<ul>
+						<li>Client: {{client}}</li>
+						<li>Date: {{date}}</li>
+						<li>Technologies: {{technologies}}</li>
+					</ul>
+					<a href="{{siteUrl}}" target="_blank" class="button primary expand btn-go">Launch <i class="icomoon-airplane"></i></a>
+				</div>
+				<p>Scroll or swipe horizontally <i class="icomoon-untitled-2"></i></p>
+			</div>
+			<img ng-src="{{image1}}" alt="">
+			<img ng-src="{{image2}}" alt="">
+			<img ng-src="{{image3}}" alt="">
+			<img ng-src="{{image4}}" alt="">
+			<div class="project-quote ">
+				<div class="panel">
+					<h4>Like it? <br> Request a Quote now! </h4>
+					<hr>
+					<ul>
+						<li><i class="icomoon-html5"></i><i class="icomoon-css3"></i> Latest technologies </li>
+						<li><i class="icomoon-chrome"></i><i class="icomoon-safari"></i><i class="icomoon-firefox"></i> Cross browser </li>
+						<li><i class="icomoon-mobile"></i><i class="icomoon-tablet"></i><i class="icomoon-screen-2"></i> Responsive web design</li>
+						<li><i class="icomoon-statistics"></i> SEO Optimized</li>
+					</ul>
+					<a href="#contact" class="button success expand btn-contact">Contact <i class="icomoon-phone"></i></a>
+				</div>
+		</div>
+		
+	</div>
+</div>
+<div id="calendar">
+	<link rel="stylesheet" href="calendar/kalendae.css" type="text/css" charset="utf-8">
+	<script src="calendar/kalendae.standalone.js" type="text/javascript" charset="utf-8"></script>
+	<style type="text/css" media="screen">
+		.kalendae .k-days span.closed {
+			background:red;
+		}
+
+		#calendar {
+			background: red;
+			height: 900px;
+		}
+	</style>
+	<script src="calendar/moment.js"></script>
+	<script>
+	    moment().format();
+	</script>
+	<div #="myDiv">my div</div>
+	<h1>Calendar</h1>
+	<p>Single Select</p>
+	<script type="text/javascript" charset="utf-8">
+
+		var chosenDate;
+
+		var day = moment().format('MMMM Do YYYY, h:mm:ss a');
+
+		alert("the DAY: " + day )
+
+		//var k = new Kalendae(document.body, {
+		var k = new Kalendae(document.body, {
+			months:1,
+			mode:'single',
+			//selected:Kalendae.moment('20150630', 'YYYYMMDD'), 
+			blackout:Kalendae.moment('20150630', 'YYYYMMDD')
+		});
+
+			k.subscribe('date-clicked', function (date) {
+			  
+			   chosenDate = this.getSelected();
+			   alert(date, chosenDate );
+
+			   this.setSelected(day);
+			});
+	</script>
+
+</div><!-- end calendar -->
+
 	<div id="work" class="step">
 		<div class="row">
 			<div class="large-3 small-12 columns blue work">

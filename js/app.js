@@ -76,7 +76,7 @@ function filterPath(string) {
     && this.hash.replace(/#/,'') ) {
       var $target = $(this.hash), target = this.hash;
       if (target) {
-        var targetOffset = $target.offset().top;
+        //var targetOffset = $target.offset().top;
         $(this).click(function(event) {
           event.preventDefault();
           $(scrollElem).animate({scrollTop: targetOffset}, 400, function() {
@@ -125,14 +125,14 @@ controllers.controller('AppCtrl', function ($scope, $http) {
       $scope.client = data.data.clients.client;
       $scope.date = data.data.clients.date;
       $scope.technologies = data.data.clients.technologies;
-      $scope.siteUrl = data.data.clients.siteUrl;
-      $scope.image1 = data.data.clients.image1;
-      $scope.image2 = data.data.clients.image2;
-      $scope.image3 = data.data.clients.image3;
-      $scope.image4 = data.data.clients.image4; */
+      $scope.siteUrl = data.data.clients.siteUrl;  */
+      $scope.image1 = data.data.image1;
+      $scope.image2 = data.data.image1;
+      $scope.image3 = data.data.image1;
+      $scope.image4 = data.data.image1; 
 
-      alert ("Finally some data: "+ data.data.booked[0] );
-      console.log("Finally some data: ", data );
+      alert ("Finally some data: ", data.data.image1 );
+      console.log("Finally some data: ", data.data.image1  );
     })
 
   $scope.updateName = function ($main_url, $post_id) {
