@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Generic JSON Client</title>
+  <link rel="stylesheet" href="kalendae.css" type="text/css" charset="utf-8">
+
+  <style>
+    .kalendae .k-days span.closed {
+      background:red;
+  }
+  </style>
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="kalendae.standalone.js" type="text/javascript" charset="utf-8"></script>
+  <script src="moment.js"></script>
+</head>
+ 
+<body> 
+<div #="myDiv">my div</div>
+  <h1>Kalendae</h1>
+  <p>Single Select</p></body>
+</html>
+<script type="text/javascript">
+
+  var booked;
+
+          function getData() {
+                $.ajax({
+                    url: 'http://sonyainc.net/harlemreservations/test.php?format=json=1&callback=parseResponse',
+                    dataType: 'jsonp',
+                    jsonpCallback: 'parseResponse'
+                }).error(function(e) {
+                    alert("Error: " + e.error );
+                });
+
+           }; //end getEvents function 
+
+           function parseResponse (response) {
+              _resp = response;
+              console.log("And for our new response: " , _resp.booked );   
+            
+                var chosenDate = _resp.booked;
+
+                moment().format();
+
+                var day = moment().format('MMMM Do YYYY, h:mm:ss a');
+
+                alert("the DAY: " + day )
+
+                var k = new Kalendae(document.body, {
+                  months:1,
+                  mode:'single',
+                  selected:Kalendae.moment('20150630', 'YYYYMMDD'), 
+                  //selected:Kalendae.moment(chosenDate, 'YYYYMMDD')
+                  //blackout:Kalendae.moment('20150630', 'YYYYMMDD')
+                });
+
+                  k.subscribe('date-clicked', function (date) {
+                    
+                     chosenDate = this.getSelected();
+                     alert(date, chosenDate );
+
+                     this.setSelected(day);
+                  });
+
+
+            }//end parseResponse
+
+</script>
+<script type="text/javascript">
+$(document).ready(function() {
+  	console.log("harlem reservations....");
+            getData();
+      });//end document ready
+</script>
